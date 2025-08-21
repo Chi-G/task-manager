@@ -49,9 +49,10 @@ class TaskController extends Controller
             if ($request->ajax()) {
                 $task = null;
                 $projects = Project::all();
-                $html = view('tasks._form', compact('task', 'projects'))
-                    ->withErrors($e->validator)
-                    ->render();
+                /** @var \Illuminate\View\View $view */
+                $view = view('projects._form', compact('task', 'projects'));
+                $html = $view->withErrors($e->validator)->render();
+                
                 return response()->json(['html' => $html]);
             }
             throw $e;
@@ -94,9 +95,10 @@ class TaskController extends Controller
         } catch (\Illuminate\Validation\ValidationException $e) {
             if ($request->ajax()) {
                 $projects = Project::all();
-                $html = view('tasks._form', compact('task', 'projects'))
-                    ->withErrors($e->validator)
-                    ->render();
+                /** @var \Illuminate\View\View $view */
+                $view = view('projects._form', compact('task', 'projects'));
+                $html = $view->withErrors($e->validator)->render();
+
                 return response()->json(['html' => $html]);
             }
             throw $e;

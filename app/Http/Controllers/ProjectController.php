@@ -36,9 +36,9 @@ class ProjectController extends Controller
         } catch (\Illuminate\Validation\ValidationException $e) {
             if ($request->ajax()) {
                 $project = null;
-                $html = view('projects._form', compact('project'))
-                    ->withErrors($e->validator)
-                    ->render();
+                /** @var \Illuminate\View\View $view */
+                $view = view('projects._form', compact('project'));
+                $html = $view->withErrors($e->validator)->render();
                 return response()->json(['html' => $html]);
             }
             throw $e;
@@ -75,9 +75,9 @@ class ProjectController extends Controller
             ]);
         } catch (\Illuminate\Validation\ValidationException $e) {
             if ($request->ajax()) {
-                $html = view('projects._form', compact('project'))
-                    ->withErrors($e->validator)
-                    ->render();
+                /** @var \Illuminate\View\View $view */
+                $view = view('projects._form', compact('project'));
+                $html = $view->withErrors($e->validator)->render();
                 return response()->json(['html' => $html]);
             }
             throw $e;
