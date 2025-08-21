@@ -69,7 +69,7 @@ A modern, business-ready Laravel web application for project and task management
 	```
 
 9. **Access the app**
-	- Visit [http://127.0.0.1:8000](http://127.0.0.1:8000).
+	- Visit [http://127.0.0.1:8000](http://127.0.0.1:8000). https://taskman.forahia.org.ng/projects
 
 ---
 
